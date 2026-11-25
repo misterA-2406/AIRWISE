@@ -3,32 +3,23 @@ import { useApp } from '../context/AppContext';
 import { RoutineActivity } from '../types';
 import { 
   Clock, 
-  MapPin, 
-  Train, 
-  Bike, 
-  Car, 
-  Footprints, 
   Heart, 
-  ShieldCheck, 
   Plus, 
   Trash2, 
-  Sparkles, 
-  Save, 
-  CheckCircle2,
-  AlertCircle
+  Save
 } from 'lucide-react';
 import { Modal } from '../components/common/Modal';
 
 export const MyRoutinePage: React.FC = () => {
   const { routineProfile, updateRoutineProfile, addToast } = useApp();
 
-  const [name, setName] = useState(routineProfile.name || 'Aarav Sharma');
+  const [name] = useState(routineProfile.name || 'Aarav Sharma');
   const [homeLocation, setHomeLocation] = useState(routineProfile.homeLocation || 'South Extension, Delhi');
   const [workLocation, setWorkLocation] = useState(routineProfile.workLocation || 'Cyber Hub / Connaught Place');
   const [primaryTransport, setPrimaryTransport] = useState(routineProfile.primaryTransport || 'Metro');
   const [commuteMinutes, setCommuteMinutes] = useState(routineProfile.commuteMinutes || 38);
-  const [exerciseTime, setExerciseTime] = useState(routineProfile.exerciseTime || 'Evening');
-  const [exerciseType, setExerciseType] = useState(routineProfile.exerciseType || 'Running');
+  const [exerciseTime] = useState(routineProfile.exerciseTime || 'Evening');
+  const [exerciseType] = useState(routineProfile.exerciseType || 'Running');
   
   // Vulnerable members
   const [vulnerable, setVulnerable] = useState(routineProfile.vulnerableMembers || {
@@ -41,7 +32,7 @@ export const MyRoutinePage: React.FC = () => {
   // Home specifics
   const [homeVentilation, setHomeVentilation] = useState(routineProfile.homeVentilation || 'Cross-ventilation windows');
   const [airPurifierOwned, setAirPurifierOwned] = useState(routineProfile.airPurifierOwned ?? true);
-  const [cookingFuel, setCookingFuel] = useState(routineProfile.cookingFuel || 'LPG Gas');
+  const [cookingFuel] = useState(routineProfile.cookingFuel || 'LPG Gas');
   const [budgetPreference, setBudgetPreference] = useState(routineProfile.budgetPreference || 'zero-budget');
 
   // Activities list
@@ -53,7 +44,7 @@ export const MyRoutinePage: React.FC = () => {
   const [newName, setNewName] = useState('');
   const [newType, setNewType] = useState<RoutineActivity['type']>('outdoor');
   const [newLocation, setNewLocation] = useState('');
-  const [newTransport, setNewTransport] = useState<RoutineActivity['transport']>('Walking');
+  const [newTransport] = useState<RoutineActivity['transport']>('Walking');
   const [newFlexible, setNewFlexible] = useState(true);
 
   const handleSaveAll = async (e: React.FormEvent) => {

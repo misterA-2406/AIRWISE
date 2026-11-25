@@ -2,20 +2,13 @@ import React, { useState } from 'react';
 import { PlanAction } from '../../types';
 import { useApp } from '../../context/AppContext';
 import { 
-  CheckCircle2, 
-  Circle, 
   Bookmark, 
   BookmarkCheck, 
-  HelpCircle, 
-  ArrowRight, 
   RefreshCw, 
   Ban, 
   Sparkles,
-  Zap,
   ChevronDown,
   ChevronUp,
-  ShieldCheck,
-  Clock,
   Check
 } from 'lucide-react';
 import { Modal } from '../common/Modal';

@@ -5,35 +5,30 @@ import { Footer } from '../components/layout/Footer';
 import { DemoBanner } from '../components/common/DemoBanner';
 import { ParticleAtmosphere } from '../components/visual/ParticleAtmosphere';
 import { AtmosphericHeroInstrument } from '../components/visual/AtmosphericHeroInstrument';
-import { ToastContainer } from '../components/common/Toast';
 import { 
   ArrowRight, 
-  Wind, 
   ShieldCheck, 
   Compass, 
-  Users, 
-  Sparkles, 
-  Sliders, 
   Activity, 
-  CheckCircle2, 
   AlertTriangle,
   Home,
   Bike,
   Flame,
-  Clock,
-  Layers,
-  ChevronRight,
-  TrendingDown,
-  Scale
+  Clock
 } from 'lucide-react';
 
+/**
+ * LandingPage Component
+ * 
+ * Public presentation of the AIRWISE personal air intelligence platform.
+ * Features live CAMS atmospheric radar, diurnal adaptation preview, and core mission architecture.
+ */
 export const LandingPage: React.FC = () => {
   // Interactive Decision Demo state for Section 2
   const [selectedDomain, setSelectedDomain] = useState<'commute' | 'indoor' | 'exercise' | 'cooking'>('commute');
   
   // Interactive "Original Day vs AIRWISE Day" comparison state
   const [dayComparisonMode, setDayComparisonMode] = useState<'adapted' | 'original' | 'sideBySide'>('adapted');
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState<number>(0);
 
   const decisionMatrix = {
     commute: {

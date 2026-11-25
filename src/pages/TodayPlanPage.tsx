@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { RecommendationCard } from '../components/ui/RecommendationCard';
-import { PlanAction } from '../types';
 import { 
-  CalendarCheck, 
   Filter, 
   SlidersHorizontal, 
   Sparkles, 
-  CheckCircle2, 
   RotateCcw,
-  Plus,
-  Compass,
-  Zap,
   Info
 } from 'lucide-react';
 import { Modal } from '../components/common/Modal';
 
+/**
+ * TodayPlanPage Component
+ * 
+ * 8-period chronological daily adaptation timeline. 
+ * Allows users to filter actions, review physiological exposure reductions, and sync to external calendars.
+ */
 export const TodayPlanPage: React.FC = () => {
   const { 
     planActions, 
     completedActionsCount, 
     totalActionsCount,
     airData,
-    routineProfile,
     setIsAIDrawerOpen,
     setAiSuggestedPrompt,
     addToast

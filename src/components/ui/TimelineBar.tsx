@@ -1,23 +1,13 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { RiskBadge } from '../visual/RiskBadge';
-import { Info, Sun, Wind, Clock } from 'lucide-react';
+import { Info, Sun, Clock } from 'lucide-react';
 
 export const TimelineBar: React.FC = () => {
   const { hourlyForecast } = useApp();
   const [selectedHour, setSelectedHour] = useState<string>(hourlyForecast[1]?.hour || '08:00');
 
   const selectedData = hourlyForecast.find(h => h.hour === selectedHour) || hourlyForecast[0];
-
-  const windows = [
-    { label: 'Morning Commute', hours: '07:00 - 09:30', risk: 'severe', note: 'Ground inversion trap; particulate peak' },
-    { label: 'Work / Study', hours: '09:30 - 13:00', risk: 'high', note: 'Filtered indoor HVAC environment recommended' },
-    { label: 'Lunch / Solar Lift', hours: '13:00 - 14:30', risk: 'moderate', note: 'Peak solar thermal dispersion (Best outdoor air)' },
-    { label: 'Afternoon', hours: '14:30 - 17:30', risk: 'moderate', note: 'Pre-rush stability with moderate wind' },
-    { label: 'Evening Commute', hours: '17:30 - 20:00', risk: 'high', note: 'Diesel tailpipe surge & declining temperatures' },
-    { label: 'Evening / Exercise', hours: '20:00 - 22:00', risk: 'severe', note: 'Cooling ground boundary traps fresh particulates' },
-    { label: 'Overnight Stagnation', hours: '22:00 - 06:00', risk: 'severe', note: 'Surface calm; keep bedrooms sealed' }
-  ];
 
   return (
     <div className="rounded-2xl bg-gradient-to-b from-[#11231B] to-[#0B1914] border border-[#91B49A]/20 p-5 shadow-xl">

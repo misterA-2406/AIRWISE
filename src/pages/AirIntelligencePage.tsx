@@ -5,31 +5,26 @@ import { StatCard } from '../components/ui/StatCard';
 import { 
   Activity, 
   Wind, 
-  Droplets, 
   Thermometer, 
   Compass, 
-  ShieldCheck, 
   Layers, 
-  MapPin, 
   HelpCircle,
-  Eye,
-  AlertTriangle,
-  ArrowRight,
-  TrendingDown,
-  TrendingUp,
-  Cpu,
   BarChart3
 } from 'lucide-react';
 import { Modal } from '../components/common/Modal';
 
+/**
+ * AirIntelligencePage Component
+ * 
+ * Deep atmospheric telemetry radar analyzing 6 pollutant species (PM2.5, PM10, NO2, O3, CO, SO2),
+ * planetary boundary layer compression heights, and diurnal dispersion vectors.
+ */
 export const AirIntelligencePage: React.FC = () => {
   const { 
     airData, 
     locations, 
-    hourlyForecast, 
     dailyForecast, 
-    currentLocationId, 
-    setLocation 
+    currentLocationId
   } = useApp();
 
   const [comparisonLocId, setComparisonLocId] = useState<string>('london');

@@ -2,24 +2,23 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { 
   UserCheck, 
-  Settings, 
-  ShieldAlert, 
   Bell, 
   Database, 
-  Download, 
-  RotateCcw, 
-  Check, 
-  Sparkles,
-  Info
+  Download
 } from 'lucide-react';
 
+/**
+ * ProfilePage Component
+ * 
+ * Manages user household vulnerability traits, notifications preferences,
+ * and deterministic offline simulation options.
+ */
 export const ProfilePage: React.FC = () => {
   const { 
     routineProfile, 
     updateRoutineProfile, 
     isDemoMode, 
     toggleDemoMode, 
-    airData,
     addToast 
   } = useApp();
 

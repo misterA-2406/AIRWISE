@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Database, Info, ShieldCheck, ChevronRight, X } from 'lucide-react';
+import { Database, ShieldCheck, ChevronRight } from 'lucide-react';
 import { Modal } from './Modal';
 
 export const DemoBanner: React.FC = () => {

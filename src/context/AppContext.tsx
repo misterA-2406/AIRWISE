@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo, useRef } from 'react';
 import { 
   AirQualityData, 
   HourlyForecast, 
@@ -114,6 +114,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const toastCounterRef = useRef<number>(0);
   const [locations, setLocations] = useState<LocationOption[]>(DEMO_LOCATIONS);
   const [currentLocationId, setCurrentLocationId] = useState<string>('delhi');
   const [airData, setAirData] = useState<AirQualityData | null>(INITIAL_AIR_DATA['delhi']);
@@ -138,7 +139,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [isDemoMode, setIsDemoMode] = useState<boolean>(false);
-  const [isLiveTelemetry, setIsLiveTelemetry] = useState<boolean>(true);
+  const [isLiveTelemetry] = useState<boolean>(true);
 
   // View Mode: Simple vs Detailed Air Science
   const [viewMode, setViewModeState] = useState<'simple' | 'detailed'>(() => {
@@ -185,7 +186,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const addToast = (title: string, message: string, type: ToastMessage['type'] = 'info') => {
-    const id = 'toast-' + Date.now() + Math.random().toString(36).substring(2, 5);
+    toastCounterRef.current += 1;
+    const id = `toast-${toastCounterRef.current}`;
     setToasts((prev) => [...prev, { id, title, message, type }]);
     setTimeout(() => {
       removeToast(id);

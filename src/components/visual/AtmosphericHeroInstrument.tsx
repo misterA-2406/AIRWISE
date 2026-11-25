@@ -1,8 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Wind, Shield, Compass, Sparkles, AlertTriangle } from 'lucide-react';
+import { Shield, Compass, Sparkles, AlertTriangle } from 'lucide-react';
 
+/**
+ * AtmosphericHeroInstrument Component
+ * 
+ * Interactive HTML5 Canvas visualization rendering live particle dispersion,
+ * nocturnal boundary layer compression, and active decision toggles.
+ */
 export const AtmosphericHeroInstrument: React.FC = () => {
-  const [activeLayer, setActiveLayer] = useState<'ground' | 'boundary' | 'stratosphere'>('ground');
   const [isAdapted, setIsAdapted] = useState<boolean>(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 

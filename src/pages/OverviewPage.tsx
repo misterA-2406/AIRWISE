@@ -1,37 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { RiskBadge } from '../components/visual/RiskBadge';
 import { TimelineBar } from '../components/ui/TimelineBar';
 import { 
   Sparkles, 
   MapPin, 
-  Clock, 
-  Activity, 
   CheckCircle2, 
-  ArrowRight, 
   ShieldCheck, 
-  Flame, 
-  Zap, 
   Bell, 
   HelpCircle, 
-  TrendingUp, 
-  Target, 
   ChevronRight,
-  Wind,
-  Droplets,
-  Thermometer,
-  Compass,
-  Check,
-  RotateCcw,
-  Sliders,
-  Radio,
-  Eye,
-  Info,
-  Calendar,
-  AlertTriangle
+  Check
 } from 'lucide-react';
 
+/**
+ * OverviewPage Component
+ * 
+ * Central personal air intelligence cockpit presenting real-time CAMS environmental telemetry,
+ * active diurnal risk assessments, and personalized chronological adaptation tasks.
+ */
 export const OverviewPage: React.FC = () => {
   const { 
     airData, 
@@ -50,7 +37,6 @@ export const OverviewPage: React.FC = () => {
 
   const [isDecisionDone, setIsDecisionDone] = useState(false);
   const [showAlternative, setShowAlternative] = useState(false);
-  const [isExplanationOpen, setIsExplanationOpen] = useState(false);
 
   // Daily primary decision definition
   const heroDecision = {

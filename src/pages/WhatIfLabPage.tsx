@@ -1,32 +1,23 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { WhatIfScenario } from '../types';
 import { 
-  Sliders, 
   Sparkles, 
-  ArrowRight, 
-  CheckCircle2, 
-  Clock, 
-  DollarSign, 
-  Leaf, 
-  Activity, 
-  ShieldCheck, 
   AlertTriangle,
   Bookmark,
   PlusCircle,
-  HelpCircle,
-  Zap,
-  RotateCcw,
-  Scale,
   Gauge,
-  TrendingDown,
   Info,
-  Check,
-  ChevronDown,
-  ChevronUp
+  Scale,
+  ShieldCheck
 } from 'lucide-react';
 import { Modal } from '../components/common/Modal';
 
+/**
+ * WhatIfLabPage Component
+ * 
+ * Interactive simulation cockpit allowing users to test lifestyle and commute interventions,
+ * visualizing personal exposure deltas alongside avoided greenhouse gas emissions (IPCC 2021).
+ */
 export const WhatIfLabPage: React.FC = () => {
   const { 
     scenarios, 

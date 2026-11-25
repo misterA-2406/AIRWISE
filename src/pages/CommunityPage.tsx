@@ -3,17 +3,12 @@ import { useApp } from '../context/AppContext';
 import { CommunityMission } from '../types';
 import { 
   Users, 
-  ShieldCheck, 
   CheckCircle2, 
   Leaf, 
   HelpCircle, 
-  TrendingUp, 
   Award, 
-  Compass, 
   Plus, 
-  Clock,
-  Sparkles,
-  Info
+  Clock
 } from 'lucide-react';
 import { Modal } from '../components/common/Modal';
 

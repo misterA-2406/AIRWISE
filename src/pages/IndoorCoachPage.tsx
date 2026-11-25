@@ -2,20 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { 
   Home, 
-  Wind, 
   ShieldCheck, 
-  CheckSquare, 
-  Square, 
-  Flame, 
-  AlertTriangle, 
-  DollarSign, 
-  Sparkles, 
-  Info, 
-  Layers, 
-  CheckCircle2,
-  Clock,
-  Zap,
-  ArrowRight,
   Check,
   ShieldAlert,
   ChevronDown,
@@ -31,12 +18,10 @@ export const IndoorCoachPage: React.FC = () => {
     toggleIndoorImplemented,
     isZeroBudgetOnly,
     setIsZeroBudgetOnly,
-    routineProfile,
     addToast,
     viewMode
   } = useApp();
 
-  const [activeTab, setActiveTab] = useState<'priority' | 'sources' | 'zeroBudget' | 'longTerm'>('priority');
   const [isLongTermExpanded, setIsLongTermExpanded] = useState(false);
 
   const activeHazardCount = indoorChecks.filter(c => c.detectedOrReported).length;
@@ -53,8 +38,6 @@ export const IndoorCoachPage: React.FC = () => {
   // Zero-budget checklist actions
   const zeroBudgetActions = indoorRecommendations.filter(r => r.isZeroBudgetEligible);
 
-  // Long-term improvements
-  const longTermActions = indoorRecommendations.filter(r => r.timeframe === 'Long-term' || r.timeframe === 'This Week');
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">

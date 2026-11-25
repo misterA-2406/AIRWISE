@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Wind, Shield, HeartHandshake, Compass } from 'lucide-react';
+import { Wind } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (

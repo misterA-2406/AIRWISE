@@ -153,11 +153,22 @@ INDOOR_RECOMMENDATIONS_SEED = [
 ]
 
 class IndoorAirService:
-    def __init__(self):
+    """Service managing household indoor air quality assessments and zero-budget protocols."""
+
+    def __init__(self) -> None:
+        """Initialize in-memory audit checks and mitigation recommendations."""
         self.checks = {c.id: c for c in INDOOR_CHECKS_SEED}
         self.recommendations = {r.id: r for r in INDOOR_RECOMMENDATIONS_SEED}
 
     def get_assessment(self, zero_budget_only: bool = False) -> IndoorAssessmentResponse:
+        """Retrieve compiled assessment of indoor pollution sources and filtered interventions.
+
+        Args:
+            zero_budget_only: When True, filters out all commercial equipment recommendations.
+
+        Returns:
+            IndoorAssessmentResponse with sources audited and prioritized actions.
+        """
         recs = list(self.recommendations.values())
         if zero_budget_only:
             recs = [r for r in recs if r.is_zero_budget_eligible]
@@ -176,12 +187,28 @@ class IndoorAirService:
         )
 
     def toggle_check(self, check_id: str) -> List[IndoorCheckItem]:
+        """Toggle detection state for a specific indoor pollution source hazard.
+
+        Args:
+            check_id: Identifier of the source hazard check item.
+
+        Returns:
+            Updated list of all source hazard audit items.
+        """
         if check_id in self.checks:
             curr = self.checks[check_id]
             self.checks[check_id] = curr.model_copy(update={"detected_or_reported": not curr.detected_or_reported})
         return list(self.checks.values())
 
     def toggle_recommendation(self, rec_id: str) -> List[IndoorRecommendationItem]:
+        """Toggle implementation status of an indoor mitigation protocol.
+
+        Args:
+            rec_id: Identifier of the indoor recommendation item.
+
+        Returns:
+            Updated list of all indoor recommendation items.
+        """
         if rec_id in self.recommendations:
             curr = self.recommendations[rec_id]
             self.recommendations[rec_id] = curr.model_copy(update={"is_implemented": not curr.is_implemented})

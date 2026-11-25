@@ -9,8 +9,7 @@ import {
   ChevronDown, 
   Check, 
   Menu, 
-  X,
-  Compass
+  X
 } from 'lucide-react';
 import { RiskBadge } from '../visual/RiskBadge';
 

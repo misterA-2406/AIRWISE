@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { Bell, X, Check, ShieldAlert, Wind, Calendar, Users, Settings2 } from 'lucide-react';
+import { Bell, X, ShieldAlert, Wind, Calendar, Users, Settings2 } from 'lucide-react';
 
 export const NotificationDrawer: React.FC = () => {
   const { 
