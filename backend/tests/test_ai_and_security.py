@@ -17,6 +17,8 @@ def test_security_headers_present():
     assert res.headers.get("X-Content-Type-Options") == "nosniff"
     assert res.headers.get("X-Frame-Options") == "DENY"
     assert res.headers.get("Referrer-Policy") == "strict-origin-when-cross-origin"
+    assert "default-src" in res.headers.get("Content-Security-Policy", "")
+    assert "max-age=" in res.headers.get("Strict-Transport-Security", "")
 
 
 def test_jwt_secret_not_hardcoded_literal():

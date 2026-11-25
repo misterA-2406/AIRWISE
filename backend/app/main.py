@@ -63,12 +63,27 @@ app.add_middleware(
 # Security Headers Middleware
 @app.middleware("http")
 async def add_security_headers(request: Request, call_next):
+    """Add defensive enterprise security headers to every outgoing response."""
     response = await call_next(request)
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     response.headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
+    response.headers["Content-Security-Policy"] = "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https:; frame-ancestors 'none';"
+    response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
     return response
+
+# Payload Size Limiter Middleware (Anti-DoS)
+@app.middleware("http")
+async def limit_payload_size(request: Request, call_next):
+    """Defend against large payload buffer-overflow and denial-of-service attacks."""
+    content_length = request.headers.get("content-length")
+    if content_length and int(content_length) > 2 * 1024 * 1024:
+        return JSONResponse(
+            status_code=413,
+            content={"code": "PAYLOAD_TOO_LARGE", "message": "Request payload exceeds 2MB security limit"}
+        )
+    return await call_next(request)
 
 # Custom Exception Handler ensuring strictly unified API response format
 @app.exception_handler(AirwiseException)

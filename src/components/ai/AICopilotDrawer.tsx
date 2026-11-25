@@ -226,6 +226,7 @@ export const AICopilotDrawer: React.FC = () => {
               onClick={() => undoLastAiChange()}
               className="text-[#F5C842] hover:underline flex items-center gap-1 text-[11px]"
               title="Undo last routine alteration"
+              aria-label="Undo AI schedule change"
             >
               <RotateCcw className="w-3 h-3" />
               <span>Undo AI change</span>
